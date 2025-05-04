@@ -74,7 +74,8 @@ if prompt:
     q_score, q_hints = score_quality(prompt)
     s_score, s_hints = score_security(prompt)
     e_score, e_hints = score_ethics(prompt)
-    score = q_score + s_score + e_score
+    # Calculate the average score for fairness
+    score = int((q_score + s_score + e_score) / 3)
     hints = q_hints + s_hints + e_hints
     breakdown = {
         "Quality": q_score,
