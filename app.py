@@ -40,14 +40,30 @@ col1, col2 = st.columns([2, 1])
 with col1:
     st.markdown("<h2 style='color:#4F8BF9;'>📝 Prompt Learner</h2>", unsafe_allow_html=True)
     st.markdown("<span style='color:#222;font-size:18px;'>Learn to craft high-quality, secure, and ethical prompts for GenAI projects!</span>", unsafe_allow_html=True)
+    # Model selection and prompt suggestion
+    model = st.selectbox(
+        "Select Model:",
+        ["GPT-3", "GPT-4", "Claude", "Llama-2"],
+        index=1
+    )
+    model_suggestions = {
+        "GPT-3": "Summarize the following article in 3 bullet points.",
+        "GPT-4": "Write a detailed step-by-step guide for setting up a secure web server, including code snippets.",
+        "Claude": "Explain the ethical considerations of using AI in hiring processes, with examples.",
+        "Llama-2": "Generate a creative story prompt for a science fiction novel set in 2050."
+    }
+    if st.button("Suggest Prompt", key="suggest_btn"):
+        st.session_state['prompt'] = model_suggestions[model]
     prompt = st.text_area(
         "Enter your prompt:",
+        value=st.session_state.get('prompt', ''),
         height=180,
         placeholder="e.g. Write a step-by-step guide for making a cup of coffee. Include an example output.",
         max_chars=500,
         help="Be as clear and specific as possible."
     )
     st.caption(f"{len(prompt)}/500 characters")
+    submitted = st.button("Submit Prompt", key="submit_btn", use_container_width=True)
 
 # --- Scoring Rubric Functions ---
 def rubric_clarity(prompt):
@@ -122,7 +138,7 @@ score = 0
 hints = []
 breakdown = {}
 
-if prompt:
+if prompt and (submitted or st.session_state.get('auto_submit', False)):
     c_score, c_hints = rubric_clarity(prompt)
     s_score, s_hints = rubric_structure(prompt)
     e_score, e_hints = rubric_examples(prompt)
@@ -167,6 +183,7 @@ if prompt:
                 st.session_state['prompt_time'] = st.session_state.get('prompt_time', st.time())
                 save_prompt(prompt)
                 st.success("Prompt saved!", icon="✅")
+    st.session_state['auto_submit'] = False
 else:
     with col2:
         st.info("Awaiting your prompt input above to provide feedback.", icon="📝")
@@ -193,7 +210,7 @@ footer = '''
 }
 </style>
 <div class="footer-bar">
-  <span>Prompt Learner &copy; 2025 &mdash; Designed by <b>Prompt UX Studio</b> | Built with <span style='color:#4F8BF9;'>Streamlit</span></span>
+  <span>Prompt Learner &copy; 2025 &mdash; Designed by <b>cshashank@live.com</b> | Built with <span style='color:#4F8BF9;'>Streamlit</span></span>
 </div>
 '''
 st.markdown(footer, unsafe_allow_html=True)
