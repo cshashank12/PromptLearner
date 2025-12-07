@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Teacher Pro</title>
+    <meta name="description" content="Master the art of prompt engineering with professional techniques.">
+    <meta name="author" content="Shashank Chaturvedi">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sticky Glass Header -->
+        <header class="main-header">
+            <div class="container-width header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon"></span> <!-- Using generic icon for demo -->
+                    <h1>Prompt Teacher <span class="pro-badge">PRO</span></h1>
+                </a>
+
+                <nav class="main-nav">
+                    <button class="nav-btn active" data-tab="guide">Techniques</button>
+                    <button class="nav-btn" data-tab="practice">Practice</button>
+                    <button class="nav-btn" data-tab="analyzer">Analyzer</button>
+                    <button class="nav-btn" data-tab="templates">Templates</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="main-content">
+
+            <!-- Techniques Tab -->
+            <section id="guide" class="tab-content active">
+                <div class="section-header">
+                    <h2>Master the Art of Prompting.</h2>
+                    <p>Professional techniques to elevate your AI interactions.</p>
+                </div>
+
+                <div class="container-width">
+                    <div class="techniques-nav">
+                        <button class="technique-pill active" data-technique="zero-shot">Zero-Shot</button>
+                        <button class="technique-pill" data-technique="few-shot">Few-Shot</button>
+                        <button class="technique-pill" data-technique="cot">Chain of Thought</button>
+                        <button class="technique-pill" data-technique="react">ReAct</button>
+                        <button class="technique-pill" data-technique="tot">Tree of Thoughts</button>
+                        <button class="technique-pill" data-technique="role">Role Prompting</button>
+                    </div>
+
+                    <div id="technique-content" class="technique-content">
+                        <!-- Content injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Practice Tab -->
+            <section id="practice" class="tab-content">
+                <div class="section-header">
+                    <h2>Practice Makes Perfect.</h2>
+                    <p>Challenge yourself with real-world scenarios.</p>
+                </div>
+
+                <div class="container-width">
+                    <div class="progress-card">
+                        <span class="progress-label">Your Proficiency</span>
+                        <div class="progress-value" id="practice-progress">0/8</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="practice-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="badges" id="badges-container" style="margin-top: 20px;"></div>
+                    </div>
+
+                    <div id="practice-area" class="practice-area">
+                        <!-- Content injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analyzer Tab -->
+            <section id="analyzer" class="tab-content">
+                <div class="section-header">
+                    <h2>Intelligent Analysis.</h2>
+                    <p>Get instant feedback on your prompt quality, security, and ethics.</p>
+                </div>
+
+                <div class="container-width">
+                    <div class="analyzer-container">
+                        <div class="input-area">
+                            <textarea id="prompt-input" class="prompt-textarea"
+                                placeholder="Enter your prompt here to analyze..."></textarea>
+                            <button id="analyze-btn" class="primary-btn"
+                                style="width: 100%; margin-top: 20px; justify-content: center;">
+                                Analyze Prompt
+                            </button>
+                        </div>
+
+                        <div class="results-area" id="analysis-results">
+                            <div
+                                style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--label-tertiary);">
+                                <span style="font-size: 48px; margin-bottom: 20px;">⚡️</span>
+                                <p>Ready to analyze</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Templates Tab -->
+            <section id="templates" class="tab-content">
+                <div class="section-header">
+                    <h2>Start with the Best.</h2>
+                    <p>Curated templates for every use case.</p>
+                </div>
+
+                <div class="container-width">
+                    <div class="templates-filter">
+                        <button class="filter-btn active" data-category="all">All</button>
+                        <button class="filter-btn" data-category="writing">Writing</button>
+                        <button class="filter-btn" data-category="coding">Coding</button>
+                        <button class="filter-btn" data-category="business">Business</button>
+                        <button class="filter-btn" data-category="creative">Creative</button>
+                    </div>
+
+                    <div id="templates-grid" class="templates-grid">
+                        <!-- Content injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="container-width">
+                <p>Copyright © 2025 Shashank Chaturvedi. All rights reserved.</p>
+                <p style="margin-top: 10px;"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="techniques.js"></script>
+    <script src="practice.js"></script>
+    <script src="analyzer.js"></script>
+    <script src="templates.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
